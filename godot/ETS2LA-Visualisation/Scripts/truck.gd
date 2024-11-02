@@ -11,13 +11,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var data = Sockets.data
-	var followSpeed = 4
+	var followSpeed = 10
 	if data != {}:
+		followSpeed = 4 #(float(data["speed"]) + 1)
 	
 		# Lerp the position to the target position
 		var apiPosition = Vector3(float(data["x"]), float(data["y"]), float(data["z"])) + offset
 		self.position = self.position.lerp(apiPosition, delta * followSpeed)
 
 		# Lerp the rotation to the target rotation
-		var apiRotation = Vector3(float(data["ry"]), float(data["rx"]), float(data["rz"]))
+		var apiRotation = Vector3(-float(data["ry"]), float(data["rx"]), float(data["rz"]))
 		self.rotation_degrees = apiRotation

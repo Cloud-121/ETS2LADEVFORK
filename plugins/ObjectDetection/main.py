@@ -32,21 +32,17 @@ class Plugin(ETS2LAPlugin):
         version="1.0",
         description="plugins.objectdetection.description",
         modules=["TruckSimAPI", "ScreenCapture", "ShowImage", "Raycasting", "PositionEstimation"],
-        tags=["Base", "Traffic Lights", "Objects"]
     )
     
-    author = [
-        Author(
-            name="DylDev",
-            url="https://github.com/DylDevs",
-            icon="https://avatars.githubusercontent.com/u/110776467?v=4"
-        ), 
-        Author(
-            name="Tumppi066",
-            url="https://github.com/Tumppi066",
-            icon="https://avatars.githubusercontent.com/u/83072683?v=4"
-        )
-    ]
+    author = [Author(
+        name="DylDev",
+        url="https://github.com/DylDevs",
+        icon="https://avatars.githubusercontent.com/u/110776467?v=4"
+    ), Author(
+        name="Tumppi066",
+        url="https://github.com/Tumppi066",
+        icon="https://avatars.githubusercontent.com/u/83072683?v=4"
+    )]
     
     settings_menu = SettingsMenu()
     
@@ -233,6 +229,7 @@ class Plugin(ETS2LAPlugin):
             loading_model = Translate("object_detection.loading_model")
             
             self.state.text = loading_model
+            self.state.progress = 0
 
             # Get device
             settings_device = settings.Get("ObjectDetection", "device", "Automatic")
@@ -256,6 +253,8 @@ class Plugin(ETS2LAPlugin):
                 self.model = self.torch.hub.load('WongKinYiu/yolov7', 'custom', path=MODEL_PATH, _verbose=False)
             elif MODEL_TYPE == "YoloV5":
                 self.model = self.torch.hub.load('ultralytics/yolov5', 'custom', path=MODEL_PATH, _verbose=False)
+                
+            self.state.progress = 0.5
                 
             self.model.conf = 0.70  # NMS confidence threshold (x% confidence to keep)
             self.model.to(device)  # Move model to GPU if available

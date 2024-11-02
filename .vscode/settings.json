@@ -8,9 +8,6 @@
         }
     ],
     "cSpell.words": [
-        "abackward",
-        "adaptivecruisecontrol",
-        "aforward",
         "autoload",
         "autopark",
         "Bezier",
@@ -22,10 +19,7 @@
         "imgtype",
         "imshow",
         "iterrows",
-        "lblinker",
         "MOSSE",
-        "overspeed",
-        "OVERSPEED",
         "padx",
         "pady",
         "pyautogui",
@@ -36,7 +30,6 @@
         "sonner",
         "SOUNDPACK",
         "SOUNDPACKS",
-        "Tumppi",
         "uids",
         "ultralytics",
         "visualisation",

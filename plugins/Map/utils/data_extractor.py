@@ -4,7 +4,7 @@ import logging
 import zipfile
 import hashlib
 import shutil
-import ujson as json
+import json
 import os
 
 DATA_FILENAME = "plugins/Map/data.zip"

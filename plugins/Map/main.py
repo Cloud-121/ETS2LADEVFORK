@@ -82,8 +82,7 @@ class Plugin(ETS2LAPlugin):
         name="plugins.map",
         description="plugins.map.description",
         version="2.0.0",
-        modules=["SDKController", "TruckSimAPI", "Steering"],
-        tags=["Base", "Steering"]
+        modules=["SDKController", "TruckSimAPI", "Steering"]
     )
     
     fps_cap = 20
