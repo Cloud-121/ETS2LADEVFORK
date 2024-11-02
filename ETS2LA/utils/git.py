@@ -15,12 +15,13 @@ def CheckForUpdate():
     if current_hash != origin_hash:
         updates = []
         for commit in repo.iter_commits(f"{current_hash}..{origin_hash}"):
-            updates.append({
-                "author": commit.author.name,
-                "message": commit.summary,
-                "description": commit.message.replace(commit.summary, "").strip(),
-                "time": commit.committed_date
-            })
+            if "Merge" not in commit.summary: # Ignore merge commits
+                updates.append({
+                    "author": commit.author.name,
+                    "message": commit.summary,
+                    "description": commit.message.replace(commit.summary, "").strip(),
+                    "time": commit.committed_date
+                })
         return updates
     else:
         return False
@@ -43,7 +44,8 @@ def GetHistory():
                 # Add the commit to the list
                 commits.append({
                     "author": commit.author.name,
-                    "message": commit.message,
+                    "message": commit.summary,
+                    "description": commit.message.replace(commit.summary, "").strip(),
                     "time": commit.committed_date
                 })
             
