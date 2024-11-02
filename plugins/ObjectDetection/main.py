@@ -70,7 +70,6 @@ class Plugin(ETS2LAPlugin):
                 import win32gui
             else:
                 print("ObjectDwetection is not supported on non-windows systems. Disabled.")
-                self.terminate()
 
             try:
                 from plugins.AR.main import ScreenLine, Text # type: ignore (Ignore import errors)
@@ -96,7 +95,13 @@ class Plugin(ETS2LAPlugin):
             self.math = math
             self.cv2 = cv2
             self.os = os
-            self.win32gui = win32gui
+            #Check if linux
+            if os.name == "posix":
+                #Linux imports
+                pass
+            else:
+                #print("ObjectDetection is not supported on non-linux systems. :3")
+                self.win32gui = win32gui
             self.ScreenLine = ScreenLine
             self.Text = Text
         except:

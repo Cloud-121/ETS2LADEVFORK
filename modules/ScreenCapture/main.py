@@ -181,7 +181,7 @@ class Module(ETS2LAModule):
                 except:
                     pass
     else: # Linux
-        def run(imgtype:str = "both"):
+        def run(self, imgtype:str = "both"):
             """imgtype: "both", "cropped", "full" """
             try:
                 # Capture the entire screen
