@@ -62,7 +62,7 @@ class Space():
         })
         
 class Input():
-    def __init__(self, name: str, key: str, type: Literal["string", "number"], default: any = None, description: str = "", requires_restart: bool = False):
+    def __init__(self, name: str, key: str, type: Literal["string", "number", "password"], default: any = None, description: str = "", requires_restart: bool = False):
         global ui
         ui.append({
             "input": {
@@ -224,7 +224,7 @@ class Form():
                     has_submit = True
         
         if not has_submit:
-            Button("Submit", "", "submit", border=False)
+            Button("submit", "", "submit", border=False)
         
         self.previous_ui.append({"form": {
             "components": ui
