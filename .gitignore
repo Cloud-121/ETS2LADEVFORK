@@ -25,3 +25,4 @@ cache
 # Pycharm
 .idea
 /plugins/ETS2LA-OpenShock-main
+/plugins/OpenShockConnect
